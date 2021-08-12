@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { FC, Suspense } from 'react';
+import PreLoader from './pages/PreLoader';
 
-function App() {
+const AppRouter = React.lazy(() => import('./AppRouter'));
+
+const App: FC = () => {
   return (
-    <div>
-      <h2>Hello Lozzby</h2>
-    </div>
+    <Suspense fallback={<PreLoader />}>
+      <AppRouter />
+    </Suspense>
   );
-}
+};
 
 export default App;
